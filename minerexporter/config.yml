@@ -1,0 +1,44 @@
+- name: miner01
+  type: object
+  path: $.rigs.501d77
+  values:
+    freespace: $.freespace
+    hash: $.hash
+    miner_instance: $.miner_instance
+    server_time: $.server_time
+    miner_secs: $.miner_secs
+    ram: $.ram
+    gpus: $.gpus
+    uptime: $.uptime
+    rx_kbps: $.rx_kbps
+    tx_kbps: $.tx_kbps
+    load: $.load
+    cpu_temp: $.cpu_temp
+
+- name: Mining
+  type: object
+  path: $
+  values:
+    total_hash: $.total_hash
+    alive_gpus: $.alive_gpus
+    total_gpus: $.total_gpus
+    alive_rigs: $.alive_rigs
+    total_rigs: $.total_rigs
+    avg_temp: $.avg_temp
+    capacity: $.capacity
+
+- name: avggpuhash
+  type: value
+  path: $.per_info.ethminer.per_hash-gpu
+
+#- name: gpus
+#  path: $.501d77.gpus
+
+#- name: 
+#  type: object
+#  path: $.per_info[*]
+#  labels:
+#    environment: beta # static label
+#    #id: $.type          # dynamic label
+#  values:
+#    hash: $.hash # dynamic value
