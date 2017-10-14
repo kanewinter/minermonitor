@@ -15,19 +15,35 @@
     load: $.load
     cpu_temp: $.cpu_temp
 
-- name: Mining
-  type: object
-  path: $
-  values:
-    total_hash: $.total_hash
-    alive_gpus: $.alive_gpus
-    total_gpus: $.total_gpus
-    alive_rigs: $.alive_rigs
-    total_rigs: $.total_rigs
-    avg_temp: $.avg_temp
-    capacity: $.capacity
+- name: miner01_total_hash
+  type: value
+  path: $.total_hash  
 
-- name: avggpuhash
+- name: miner01_alive_gpus
+  type: value
+  path: $.alive_gpus
+
+- name: miner01_total_gpus
+  type: value
+  path: $.total_gpus
+
+- name: alive_rigs
+  type: value
+  path: $.alive_rigs
+
+- name: total_rigs
+  type: value
+  path: $.total_rigs
+
+- name: miner01_avg_temp
+  type: value
+  path: $.avg_temp
+
+- name: miner01_capacity
+  type: value
+  path: $.capacity
+ 
+- name: miner01_avggpuhash
   type: value
   path: $.per_info.ethminer.per_hash-gpu
 
