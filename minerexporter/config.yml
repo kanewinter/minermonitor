@@ -47,6 +47,66 @@
   type: value
   path: $.per_info.ethminer.per_hash-gpu
 
+
+
+
+- name: miner02
+  type: object
+  path: $.rigs.501b79
+  values:
+    freespace: $.freespace
+    hash: $.hash
+    miner_instance: $.miner_instance
+    server_time: $.server_time
+    miner_secs: $.miner_secs
+    ram: $.ram
+    gpus: $.gpus
+    uptime: $.uptime
+    rx_kbps: $.rx_kbps
+    tx_kbps: $.tx_kbps
+    load: $.load
+    cpu_temp: $.cpu_temp
+
+- name: miner02_total_hash
+  type: value
+  path: $.total_hash
+
+- name: miner02_alive_gpus
+  type: value
+  path: $.alive_gpus
+
+- name: miner02_total_gpus
+  type: value
+  path: $.total_gpus
+
+- name: alive_rigs
+  type: value
+  path: $.alive_rigs
+
+- name: total_rigs
+  type: value
+  path: $.total_rigs
+
+- name: miner02_avg_temp
+  type: value
+  path: $.avg_temp
+
+- name: miner02_capacity
+  type: value
+  path: $.capacity
+
+- name: miner02_avggpuhash
+  type: value
+  path: $.per_info.ethminer.per_hash-gpu
+
+
+
+
+
+
+
+
+
 #- name: gpus
 #  path: $.501d77.gpus
 
