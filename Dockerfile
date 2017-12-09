@@ -5,10 +5,13 @@ MAINTAINER Kane Lewis "nicholaskanelewis@gmail.com"
 
 #add repository and update the container
 #Installation of nesesary package/software for this containers...
-RUN dnf install -y -q  wget \
-                       curl \
-                       bc   \
-                       git  \
+RUN dnf install -y -q  wget      \
+                       curl      \
+                       bc        \
+                       git       \
+                       which     \
+                       iputils   \
+                       procps-ng \
                        jq
 
 RUN git clone https://github.com/kanewinter/minermonitor.git
