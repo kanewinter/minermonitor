@@ -1,7 +1,7 @@
 #!/bin/bash
 
-MINER01=8000
-MINER02=3200
+MINER01=5500
+MINER02=3100
 
 RESULT1=`curl 'http://jaylin.ethosdistro.com/?json=yes' | jq '.rigs."501d77"."hash"'`
 RESULT2=`curl 'http://jaylin.ethosdistro.com/?json=yes' | jq '.rigs."501b79"."hash"'`
@@ -18,4 +18,5 @@ else
 echo "$RESULT2"
 fi
 
-sleep 5m
+echo "Sleeping..."
+sleep 1m
