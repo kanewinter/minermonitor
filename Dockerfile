@@ -11,7 +11,7 @@ RUN dnf install -y -q  wget \
                        git  \
                        jq
 
-RUN git clone git@github.com:kanewinter/minermonitor.git \
-    && cd minermonitor/
+RUN git clone https://github.com/kanewinter/minermonitor.git
 
-CMD ["./hashwatch.bash"]
+
+CMD ["minermonitor/hashwatch.bash"]
