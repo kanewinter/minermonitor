@@ -3,6 +3,9 @@
 MINER01=5500
 MINER02=3100
 
+while true
+do
+
 RESULT1=`curl 'http://jaylin.ethosdistro.com/?json=yes' | jq '.rigs."501d77"."hash"'`
 RESULT2=`curl 'http://jaylin.ethosdistro.com/?json=yes' | jq '.rigs."501b79"."hash"'`
 
@@ -18,5 +21,7 @@ else
 echo "$RESULT2"
 fi
 
-echo "Sleeping..."
+echo "`date` Sleeping..."
 sleep 1m
+
+done
