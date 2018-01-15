@@ -1,10 +1,10 @@
 #!/bin/bash
 
-wait watch -bcg -n 10 git pull
+wait `watch -bcg -n 10 git pull`
 
 ls -l | grep -v ^l | wc -l
 
-C=`ls -1 /opt/wagerr/ | wc -l`
+C=`ls -1 | wc -l`
 
 if ( C > 3 ); then
 ./nma.sh GitWatch FilesDetected "I see $C files" 2
