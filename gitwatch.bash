@@ -1,13 +1,9 @@
 #!/bin/bash
 
-wait `watch -bcg -n 10 git pull`
-
-ls -l | grep -v ^l | wc -l
-
-C=`ls -1 | wc -l`
-
-if ( C > 3 ); then
-./nma.sh GitWatch FilesDetected "I see $C files" 2
-else
+C=0
+while ($C < 3 ); do
+watch -bcg -n 10 git pull
 ./nma.sh GitWatch WatchStopped "GitWatch Stopped" 2
-fi
+C=`ls -1 | wc -l`
+done
+./nma.sh GitWatch FilesDetected "I see $C files" 2
