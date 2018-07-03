@@ -2,17 +2,16 @@
 #########################################################################################
 ### androidNotifty.sh        	#
 ### Script for sending notifications using "Notify My Androids" API    #
-###    Author : Markp1989@gmail.com  Version: 25JULY2011  #
 #########################################################################################
 ## Requirements:	curl        	#
 #########################################################################################
 ## Usage: androidNotify.sh "Application Name" "Event Name" "Some Details" [priority]	#
 #########################################################################################
-## API Documentation:	https://www.notifymyandroid.com/api.jsp      #
+## API Documentation:	https://www.notifymydevice.com/api      #
 #########################################################################################
 
 #####start user configurable settings####
-APIkey="c24dd388bbb46245b031c190030d6910092416879e787e28" ## API Key must me set here, go to http://www.notifymyandroid.com/ to get one
+APIkey="YV61U5VI8EFDC3GDLTU7THDID" ## API Key must me set here, go to http://www.notifymyandroid.com/ to get one
 limit=5 # how many times to attempt to run curl, can help on unstable networks.
 pinghost="google.com" ##host to ping before running anything to verify that the internet is up.
 #####end user configurable settings######
@@ -25,9 +24,9 @@ description=$3
 priority=$4 
 
 ##the urls that are used to send the notification##
-baseurl="https://www.notifymyandroid.com/publicapi"
+baseurl="https://www.notifymydevice.com"
 verifyurl="$baseurl/verify"
-posturl="$baseurl/notify"
+posturl="$baseurl/push"
 
 ##choosing a unique temp file based on the time (date,month,hour,minute,nano second),to avoid concurent usage interfering with each other
 notifyout=/tmp/androidNotify$(date '+%d%m%Y%H%M%S%N')
@@ -59,8 +58,8 @@ function input_check {
 ##this section checks that the parameters are an acceptable length if any of these tests fail then the program exits.
 ##the API will send an error back if the data sent is invalid, but no point in knowingly sending incorrect information.
 #API key must be 48 characters long, just because the APIkey is the right length doesnt mean its valid,the API will complain if it is invalid.
-if [[ "${#APIkey}" -ne "48" ]]; then
-errormessage="APIkey must be 48 characters long, you gave me ${#APIkey}"
+if [[ "${#APIkey}" -ne "25" ]]; then
+errormessage="APIkey must be 25 characters long, you gave me ${#APIkey}"
        error_exit
 #application must be between 1 and 256 characters long
 elif [[ "${#application}" -gt "256" ||  "${#application}" -lt "1" ]]; then
@@ -105,7 +104,7 @@ then
  printf '%s\n' "another instance of curl is running, waiting up to 1 minute before trying."
  sleep $((RANDOM % 60)) ##waiting up to 1 minute as running multiple instances of curl at a time was causing some to fail on my machine.
 fi
-curl --silent --data-ascii "apikey=$APIkey" --data-ascii "application=$application" --data-ascii "event=$event" --data-asci "description=$description" --data-asci "priority=$priority" $posturl -o $notifyout && complete=1
+curl --silent --data-ascii "ApiKey=$APIkey" --data-ascii "PushTitle=$application" --data-ascii "PushText=$event" $posturl -o $notifyout && complete=1
 tries=$tries+1
 done
 }
@@ -113,6 +112,7 @@ done
 function check_notification {
 ##checking that the notification was sent ok.
 ##api returns message 200 if the notification was sent
+echo $notifyout
 if grep -q 200 $notifyout; then
 clean_exit
 else
@@ -127,4 +127,4 @@ fi
 pre_check
 input_check
 send_notification
-check_notification
+#check_notification
